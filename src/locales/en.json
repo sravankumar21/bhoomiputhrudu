@@ -1,0 +1,284 @@
+{
+  "site": {
+    "name": "Bhoomiputhrudu",
+    "tagline": "Son of the Soil",
+    "description": "Your trusted partner in agriculture"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "products": "Products",
+    "categories": "Categories",
+    "seeds": "Seeds",
+    "fertilizers": "Fertilizers",
+    "pesticides": "Pesticides",
+    "tools": "Tools",
+    "irrigation": "Irrigation",
+    "cart": "Cart",
+    "login": "Login",
+    "signup": "Sign Up",
+    "logout": "Logout",
+    "admin": "Admin Panel",
+    "profile": "Profile",
+    "myOrders": "My Orders"
+  },
+  "hero": {
+    "title": "Growing Together, Harvesting Prosperity",
+    "subtitle": "Quality agricultural products for the farmers of Andhra Pradesh & Telangana",
+    "cta": "Shop Now",
+    "slide1": {
+      "title": "Micro Irrigation Solutions",
+      "description": "Water-efficient farming for better yields"
+    },
+    "slide2": {
+      "title": "Premium Seeds & Fertilizers",
+      "description": "Quality inputs for quality harvest"
+    },
+    "slide3": {
+      "title": "Sustainable Agriculture",
+      "description": "Growing more with less — sustainable farming solutions"
+    }
+  },
+  "categories": {
+    "title": "Shop by Category",
+    "seeds": { "name": "Seeds", "description": "Premium quality seeds for all seasons" },
+    "fertilizers": { "name": "Fertilizers", "description": "Organic & chemical fertilizers" },
+    "pesticides": { "name": "Pesticides", "description": "Crop protection solutions" },
+    "tools": { "name": "Farm Tools", "description": "Modern farming equipment" },
+    "irrigation": { "name": "Irrigation", "description": "Drip, sprinkler & micro irrigation" },
+    "organic": { "name": "Organic Products", "description": "100% organic farming inputs" }
+  },
+  "products": {
+    "title": "Featured Products",
+    "viewAll": "View All",
+    "addToCart": "Add to Cart",
+    "buyNow": "Buy Now",
+    "inStock": "In Stock",
+    "outOfStock": "Out of Stock",
+    "price": "Price",
+    "discountPrice": "Discount Price",
+    "description": "Description",
+    "specifications": "Specifications",
+    "relatedProducts": "Related Products",
+    "noProducts": "No products found",
+    "filterByPrice": "Filter by Price",
+    "sortBy": "Sort By",
+    "sortOptions": {
+      "priceLow": "Price: Low to High",
+      "priceHigh": "Price: High to Low",
+      "nameAZ": "Name: A to Z",
+      "newest": "Newest First"
+    },
+    "subcategories": {
+      "paddy": "Paddy Seeds",
+      "chilli": "Chilli Seeds",
+      "turmeric": "Turmeric Seeds",
+      "groundnut": "Groundnut Seeds",
+      "cotton": "Cotton Seeds",
+      "maize": "Maize Seeds",
+      "urea": "Urea",
+      "dap": "DAP",
+      "organicManure": "Organic Manure",
+      "micronutrients": "Micronutrients",
+      "npk": "NPK Fertilizers",
+      "potash": "Potash",
+      "insecticides": "Insecticides",
+      "fungicides": "Fungicides",
+      "herbicides": "Herbicides",
+      "rodenticides": "Rodenticides",
+      "plantGrowth": "Plant Growth Regulators",
+      "biopesticides": "Biopesticides",
+      "dripIrrigation": "Drip Irrigation",
+      "sprinkler": "Sprinkler Systems",
+      "pipes": "Pipes & Fittings",
+      "valves": "Valves",
+      "filters": "Filters",
+      "sprayers": "Sprayers",
+      "pumps": "Water Pumps",
+      "moisture": "Moisture Sensors",
+      "timers": "Irrigation Timers",
+      "looper": "Looper",
+      "pruner": "Pruner",
+      "hoe": "Hoe",
+      "sickle": "Sickle",
+      "spade": "Spade",
+      "rake": "Rake",
+      "shovel": "Shovel",
+      "axe": "Axe",
+      "trowel": "Trowel"
+    }
+  },
+  "cart": {
+    "title": "Shopping Cart",
+    "empty": "Your cart is empty",
+    "continueShopping": "Continue Shopping",
+    "subtotal": "Subtotal",
+    "deliveryCharge": "Delivery Charge",
+    "total": "Total",
+    "proceedToCheckout": "Proceed to Checkout",
+    "remove": "Remove",
+    "quantity": "Quantity",
+    "deliveryFree": "Free Delivery",
+    "deliveryNote": "Delivery charge: ₹40 per order"
+  },
+  "auth": {
+    "login": {
+      "title": "Login to Your Account",
+      "mobile": "Mobile Number",
+      "password": "Password",
+      "submit": "Login",
+      "noAccount": "Don't have an account?",
+      "signupLink": "Sign Up",
+      "forgotPassword": "Forgot Password?",
+      "invalidCredentials": "Invalid mobile number or password",
+      "success": "Login successful!"
+    },
+    "signup": {
+      "title": "Create Account",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "mobile": "Mobile Number",
+      "email": "Email Address",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "submit": "Sign Up",
+      "hasAccount": "Already have an account?",
+      "loginLink": "Login",
+      "passwordMismatch": "Passwords do not match",
+      "success": "Account created successfully!"
+    }
+  },
+  "checkout": {
+    "title": "Place Order",
+    "step1": "Login",
+    "step2": "Delivery Address",
+    "step3": "Order Summary",
+    "step4": "Payment",
+    "address": {
+      "title": "Delivery Address",
+      "fullName": "Full Name",
+      "phone": "Phone Number",
+      "address": "Address",
+      "apartment": "Apartment / Floor (optional)",
+      "city": "City",
+      "state": "State",
+      "pincode": "PIN Code",
+      "useCurrentLocation": "Use Current Location",
+      "savedAddresses": "Saved Addresses",
+      "addNew": "Add New Address"
+    },
+    "summary": {
+      "title": "Order Summary",
+      "items": "Order Items",
+      "deliveryAddress": "Delivery Address"
+    },
+    "payment": {
+      "title": "Payment",
+      "cod": "Cash on Delivery",
+      "online": "Online Payment",
+      "upi": "UPI",
+      "comingSoon": "Online payment coming soon!"
+    },
+    "success": "Order placed successfully!",
+    "placeOrder": "Place Order"
+  },
+  "admin": {
+    "dashboard": "Admin Dashboard",
+    "manageProducts": "Manage Products",
+    "addProduct": "Add Product",
+    "manageOrders": "Manage Orders",
+    "manageFarmers": "Manage Farmers",
+    "stats": {
+      "totalProducts": "Total Products",
+      "totalOrders": "Total Orders",
+      "totalFarmers": "Total Farmers",
+      "totalRevenue": "Total Revenue"
+    },
+    "form": {
+      "productName": "Product Name",
+      "productNameTelugu": "Product Name (Telugu)",
+      "price": "Price (₹)",
+      "discountPrice": "Discount Price (₹)",
+      "category": "Category",
+      "subcategory": "Subcategory",
+      "stock": "Stock Quantity",
+      "description": "Description",
+      "descriptionTelugu": "Description (Telugu)",
+      "imageUrl": "Image URL",
+      "specifications": "Specifications",
+      "submit": "Add Product",
+      "success": "Product added successfully!"
+    }
+  },
+  "about": {
+    "title": "About Bhoomiputhrudu",
+    "mission": "Our Mission",
+    "missionText": "To empower farmers with quality agricultural inputs and modern farming solutions, helping them achieve better yields and sustainable livelihoods.",
+    "vision": "Our Vision",
+    "visionText": "A India where every farmer has access to quality inputs, fair prices, and the knowledge to grow sustainably.",
+    "founder": "Our Founder",
+    "journey": "Our Journey",
+    "values": "Our Values",
+    "quality": "Quality First",
+    "qualityDesc": "We never compromise on the quality of our products",
+    "trust": "Farmer Trust",
+    "trustDesc": "Built on trust with thousands of happy farmers across Andhra Pradesh & Telangana",
+    "support": "24/7 Support",
+    "supportDesc": "Always here to help with farming queries and orders",
+    "delivery": "Fast Delivery",
+    "deliveryDesc": "Quick delivery to your doorstep across rural Andhra Pradesh & Telangana"
+  },
+  "testimonials": {
+    "title": "What Farmers Say",
+    "whyUs": "Why We Shine",
+    "qualityProducts": "Quality Products",
+    "qualityProductsDesc": "Only the best for your farm",
+    "fastDelivery": "Fast Delivery",
+    "fastDeliveryDesc": "Right to your doorstep",
+    "expertSupport": "Expert Support",
+    "expertSupportDesc": "Agricultural guidance always",
+    "faq": "Frequently Asked Questions",
+    "faq1": {
+      "question": "How long does delivery take?",
+      "answer": "We typically deliver within 3-5 business days across Andhra Pradesh and Telangana."
+    },
+    "faq2": {
+      "question": "Do you offer bulk discounts?",
+      "answer": "Yes! Contact us for bulk orders and special pricing for farming cooperatives."
+    },
+    "faq3": {
+      "question": "What payment methods do you accept?",
+      "answer": "We currently support Cash on Delivery. Online payment options are coming soon!"
+    }
+  },
+  "footer": {
+    "company": "Company",
+    "helpfulLinks": "Helpful Links",
+    "contact": "Contact Us",
+    "address": "Nagarjuna Sagar Road, Hyderabad, Telangana - 500074",
+    "phone": "+91 9381935889",
+    "email": "support@bhoomiputhrudu.com",
+    "copyright": "© 2024 Bhoomiputhrudu. All rights reserved.",
+    "faq": "FAQ",
+    "shippingPolicy": "Shipping Policy",
+    "returnPolicy": "Return Policy",
+    "privacyPolicy": "Privacy Policy",
+    "terms": "Terms & Conditions",
+    "refundPolicy": "Refund Policy",
+    "cancellationPolicy": "Cancellation Policy"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Try Again",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "search": "Search",
+    "searchPlaceholder": "Search products...",
+    "noResults": "No results found",
+    "comingSoon": "Coming Soon",
+    "backToHome": "Back to Home"
+  }
+}
