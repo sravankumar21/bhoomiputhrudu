@@ -7,7 +7,6 @@ import { ShoppingCart, ArrowLeft, Package, ChevronRight } from "lucide-react";
 import toast from "react-hot-toast";
 import { useLanguage } from "@/store/language";
 import { useAuthStore } from "@/store/auth";
-import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 export default function SubcategoryPage() {
   const { t } = useLanguage();
@@ -19,8 +18,6 @@ export default function SubcategoryPage() {
   const [loading, setLoading] = useState(true);
   const [addingId, setAddingId] = useState<string | null>(null);
 
-  const heroRef = useScrollReveal();
-  const gridRef = useScrollReveal();
 
   useEffect(() => {
     setLoading(true);
@@ -69,7 +66,7 @@ export default function SubcategoryPage() {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        <nav className="scroll-hidden animate-fade-in flex items-center gap-2 mb-6 text-sm text-text-muted">
+        <nav className="animate-fade-in flex items-center gap-2 mb-6 text-sm text-text-muted">
           <Link href="/products" className="hover:text-primary transition-colors duration-300">
             {t.allProducts}
           </Link>
@@ -81,7 +78,7 @@ export default function SubcategoryPage() {
           <span className="text-text font-medium">{subcategory}</span>
         </nav>
 
-        <div ref={heroRef} className="scroll-hidden flex items-center gap-4 mb-10">
+        <div className="flex items-center gap-4 mb-10">
           <Link
             href={`/products/${category}`}
             className="w-10 h-10 rounded-full bg-bg-card border border-border flex items-center justify-center text-text hover:text-primary hover:border-primary/30 transition-all duration-300"
@@ -103,7 +100,7 @@ export default function SubcategoryPage() {
             <div className="w-12 h-12 border-4 border-primary/20 border-t-primary rounded-full animate-spin" />
           </div>
         ) : products.length === 0 ? (
-          <div className="scroll-hidden animate-fade-in-up text-center py-32">
+          <div className="animate-fade-in-up text-center py-32">
             <div className="w-20 h-20 rounded-full bg-primary-50 flex items-center justify-center mx-auto mb-6">
               <Package className="w-10 h-10 text-text-muted" />
             </div>
@@ -111,7 +108,7 @@ export default function SubcategoryPage() {
             <p className="text-text-muted">Try a different subcategory</p>
           </div>
         ) : (
-          <div ref={gridRef} className="scroll-hidden grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-7">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-7">
             {products.map((product: any) => (
               <div
                 key={product._id}

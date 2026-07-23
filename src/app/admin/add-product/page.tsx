@@ -7,7 +7,6 @@ import { ArrowLeft, Upload } from "lucide-react";
 import toast from "react-hot-toast";
 import { useLanguage } from "@/store/language";
 import { useAuthStore } from "@/store/auth";
-import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const categoryOptions = ["Seeds", "Fertilizers", "Pesticides", "Tools", "Irrigation", "Organic"];
 
@@ -36,8 +35,6 @@ export default function AddProductPage() {
     unit: "",
   });
 
-  const headerRef = useScrollReveal();
-  const formRef = useScrollReveal();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -99,7 +96,7 @@ export default function AddProductPage() {
       </div>
 
       <div className="relative max-w-2xl mx-auto px-4 py-12 md:py-16">
-        <div ref={headerRef} className="scroll-hidden flex items-center gap-4 mb-10">
+        <div className="flex items-center gap-4 mb-10">
           <Link
             href="/admin"
             className="w-10 h-10 rounded-full bg-bg-card border border-border flex items-center justify-center text-text hover:text-primary hover:border-primary/30 transition-all duration-300"
@@ -113,9 +110,8 @@ export default function AddProductPage() {
         </div>
 
         <form
-          ref={formRef}
           onSubmit={handleSubmit}
-          className="scroll-hidden bg-bg-card rounded-2xl border border-border shadow-sm p-8 md:p-10 space-y-6"
+          className="bg-bg-card rounded-2xl border border-border shadow-sm p-8 md:p-10 space-y-6"
         >
           <div>
             <label className={labelClass}>{t.admin.productName} *</label>

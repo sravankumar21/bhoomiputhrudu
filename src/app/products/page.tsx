@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { Wheat, Droplets, Bug, Wrench, TreeDeciduous, ChevronRight } from "lucide-react";
 import { useLanguage } from "@/store/language";
-import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const categoryData = [
   { key: "seeds", icon: Wheat, image: "https://images.pexels.com/photos/2589457/pexels-photo-2589457.jpeg?w=600", desc: "Premium quality seeds for all seasons" },
@@ -16,32 +15,27 @@ const categoryData = [
 
 export default function ProductsPage() {
   const { t } = useLanguage();
-  const ref = useScrollReveal({ animation: "animate-fade-in-up" });
 
   return (
     <div className="min-h-screen bg-bg">
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary-dark via-primary to-primary-dark py-20 md:py-28 text-white">
+      <section className="relative bg-gradient-to-br from-primary-dark via-primary to-primary-dark py-20 md:py-28 text-white overflow-hidden">
         <div className="pointer-events-none absolute inset-0">
-          <div className="ambient-blob -right-32 -top-32 h-[500px] w-[500px] bg-primary-light/10 animate-pulse-soft" />
-          <div className="ambient-blob -left-20 bottom-20 h-[400px] w-[400px] bg-primary-50/10 animate-float" />
+          <div className="absolute -right-32 -top-32 h-[500px] w-[500px] rounded-full bg-primary-light/10 blur-[100px] animate-pulse-soft" />
         </div>
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-primary-light mb-4">Our Collection</p>
-          <h1 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold text-white mb-4">{t.nav.products}</h1>
-          <p className="max-w-xl mx-auto text-white/70">{t.browseCategories}</p>
+          <p className="animate-fade-in-up text-xs font-semibold uppercase tracking-[0.25em] text-primary-light mb-3">Our Collection</p>
+          <h1 className="animate-fade-in-up delay-100 font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold text-white mb-4">{t.nav.products}</h1>
+          <p className="animate-fade-in-up delay-200 max-w-xl mx-auto text-white/70">{t.browseCategories}</p>
         </div>
       </section>
 
       <div className="gradient-divider" />
 
-      {/* Categories Grid */}
-      <section className="relative overflow-hidden bg-bg py-20 md:py-28">
+      <section className="relative py-20 md:py-28 bg-bg overflow-hidden">
         <div className="pointer-events-none absolute inset-0">
-          <div className="ambient-blob -right-32 -top-32 h-[500px] w-[500px] bg-primary/5 animate-pulse-soft" />
-          <div className="ambient-blob -left-20 bottom-20 h-[400px] w-[400px] bg-primary-light/8 animate-float" />
+          <div className="absolute -right-32 -top-32 h-[500px] w-[500px] rounded-full bg-primary/5 blur-[100px] animate-pulse-soft" />
         </div>
-        <div ref={ref as React.RefObject<HTMLDivElement>} className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {categoryData.map((cat, i) => {
               const Icon = cat.icon;
@@ -50,23 +44,22 @@ export default function ProductsPage() {
                 <Link
                   key={cat.key}
                   href={`/products/${cat.key}`}
-                  className={`scroll-hidden delay-${(i + 1) * 100} group relative overflow-hidden rounded-2xl border border-border bg-bg-card shadow-sm transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:-translate-y-1`}
+                  className="animate-fade-in-up group overflow-hidden rounded-2xl border border-border bg-bg-card shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-primary/30"
+                  style={{ animationDelay: `${(i + 1) * 100}ms` }}
                 >
                   <div className="relative h-48 overflow-hidden">
                     <img src={cat.image} alt="" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                   </div>
                   <div className="p-5">
                     <div className="flex items-center gap-3 mb-2">
                       <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-50 transition-all duration-300 group-hover:bg-primary">
                         <Icon className="h-5 w-5 text-primary transition-colors duration-300 group-hover:text-white" strokeWidth={1.5} />
                       </div>
-                      <h2 className="font-[family-name:var(--font-playfair)] text-xl font-semibold text-text group-hover:text-primary transition-colors duration-300">
-                        {catName?.name || cat.key}
-                      </h2>
+                      <h2 className="font-[family-name:var(--font-playfair)] text-xl font-semibold text-text group-hover:text-primary transition-colors duration-300">{catName?.name || cat.key}</h2>
                     </div>
                     <p className="text-sm text-text-muted">{catName?.description || cat.desc}</p>
-                    <div className="mt-4 flex items-center gap-1 text-sm font-medium text-primary">
+                    <div className="mt-4 flex items-center gap-1 text-sm font-semibold text-primary">
                       {t.products.viewAll} <ChevronRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                     </div>
                   </div>

@@ -16,7 +16,6 @@ import {
 } from "lucide-react";
 import { useLanguage } from "@/store/language";
 import { useAuthStore } from "@/store/auth";
-import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 export default function AdminDashboard() {
   const { t } = useLanguage();
@@ -29,9 +28,6 @@ export default function AdminDashboard() {
     totalRevenue: 0,
   });
 
-  const headerRef = useScrollReveal();
-  const statsRef = useScrollReveal();
-  const actionsRef = useScrollReveal();
 
   useEffect(() => {
     if (!user || user.role !== "admin") {
@@ -75,14 +71,14 @@ export default function AdminDashboard() {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        <div ref={headerRef} className="scroll-hidden text-center mb-12">
+        <div className="text-center mb-12">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-primary mb-3">Administration</p>
           <h1 className="font-[family-name:var(--font-playfair)] text-3xl md:text-4xl font-semibold text-text">
             {t.admin.dashboard}
           </h1>
         </div>
 
-        <div ref={statsRef} className="scroll-hidden grid grid-cols-2 lg:grid-cols-4 gap-5 mb-12">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-12">
           {statCards.map((card) => {
             const Icon = card.icon;
             return (
@@ -103,7 +99,7 @@ export default function AdminDashboard() {
 
         <div className="gradient-divider mb-12" />
 
-        <div ref={actionsRef} className="scroll-hidden delay-500">
+        <div className="delay-500">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-primary mb-6">Quick Actions</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {links.map((link) => {

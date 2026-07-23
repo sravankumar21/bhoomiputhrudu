@@ -7,7 +7,6 @@ import { ArrowLeft, Search, Users, Trash2 } from "lucide-react";
 import toast from "react-hot-toast";
 import { useLanguage } from "@/store/language";
 import { useAuthStore } from "@/store/auth";
-import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 export default function ManageFarmersPage() {
   const { t } = useLanguage();
@@ -18,9 +17,6 @@ export default function ManageFarmersPage() {
   const [search, setSearch] = useState("");
   const [deletingId, setDeletingId] = useState<string | null>(null);
 
-  const headerRef = useScrollReveal();
-  const searchRef = useScrollReveal();
-  const tableRef = useScrollReveal();
 
   useEffect(() => {
     if (!user || user.role !== "admin") {
@@ -80,7 +76,7 @@ export default function ManageFarmersPage() {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        <div ref={headerRef} className="scroll-hidden flex items-center gap-4 mb-10">
+        <div className="flex items-center gap-4 mb-10">
           <Link
             href="/admin"
             className="w-10 h-10 rounded-full bg-bg-card border border-border flex items-center justify-center text-text hover:text-primary hover:border-primary/30 transition-all duration-300"
@@ -93,7 +89,7 @@ export default function ManageFarmersPage() {
           </div>
         </div>
 
-        <div ref={searchRef} className="scroll-hidden bg-bg-card rounded-2xl border border-border shadow-sm p-5 mb-8 flex items-center gap-4">
+        <div className="bg-bg-card rounded-2xl border border-border shadow-sm p-5 mb-8 flex items-center gap-4">
           <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/10 to-primary-light/10 flex items-center justify-center">
             <Search className="w-5 h-5 text-primary" />
           </div>
@@ -111,14 +107,14 @@ export default function ManageFarmersPage() {
             <div className="w-12 h-12 border-4 border-primary/20 border-t-primary rounded-full animate-spin" />
           </div>
         ) : filtered.length === 0 ? (
-          <div className="scroll-hidden animate-fade-in-up text-center py-32">
+          <div className="animate-fade-in-up text-center py-32">
             <div className="w-20 h-20 rounded-full bg-primary-50 flex items-center justify-center mx-auto mb-6">
               <Users className="w-10 h-10 text-text-muted" />
             </div>
             <p className="text-xl font-[family-name:var(--font-playfair)] text-text">{t.admin.noFarmersFound}</p>
           </div>
         ) : (
-          <div ref={tableRef} className="scroll-hidden bg-bg-card rounded-2xl border border-border shadow-sm overflow-hidden">
+          <div className="bg-bg-card rounded-2xl border border-border shadow-sm overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead className="bg-primary-50 text-left">
