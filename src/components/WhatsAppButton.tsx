@@ -20,10 +20,16 @@ export default function WhatsAppButton() {
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-50 bg-green-500 text-white rounded-full p-4 shadow-lg hover:bg-green-600 transition-all hover:scale-110"
       aria-label="Chat on WhatsApp"
+      className="fixed bottom-6 right-6 z-50 group animate-fade-in-up"
     >
-      <MessageCircle size={28} />
+      {/* Pulse ring */}
+      <span className="absolute inset-0 rounded-full bg-green-400 animate-whatsapp-pulse" />
+
+      {/* Button */}
+      <span className="relative flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-green-400 to-green-600 text-white shadow-lg shadow-green-500/30 group-hover:scale-110 group-hover:shadow-xl group-hover:shadow-green-500/40 transition-all duration-500">
+        <MessageCircle size={26} strokeWidth={1.8} />
+      </span>
     </a>
   );
 }

@@ -1,134 +1,163 @@
 "use client";
 
-import { Sprout, Target, Eye, Heart, Truck, Headphones, Shield } from "lucide-react";
+import { Sprout, Target, Eye, Heart, Truck, Headphones, Shield, ChevronRight } from "lucide-react";
 import { useLanguage } from "@/store/language";
 
 export default function AboutPage() {
   const { t } = useLanguage();
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="relative min-h-screen bg-ivory overflow-hidden">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -right-32 -top-32 h-[500px] w-[500px] rounded-full bg-green-primary/[0.04] blur-[100px] animate-pulse-glow" />
+        <div className="absolute -left-20 bottom-20 h-[400px] w-[400px] rounded-full bg-green-muted/20 blur-[80px] animate-float-slow" />
+      </div>
+
       {/* Hero */}
-      <section className="bg-gradient-to-br from-green-700 to-green-800 text-white py-16 md:py-24">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <Sprout className="w-12 h-12 mx-auto mb-4 text-green-300" />
-          <h1 className="text-3xl md:text-5xl font-bold mb-4">{t.about.title}</h1>
+      <section className="relative py-24 md:py-32 bg-gradient-to-br from-green-dark via-green-primary to-green-light text-white overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 left-10 w-72 h-72 rounded-full bg-white/20 blur-[80px] animate-float" />
+          <div className="absolute bottom-10 right-10 w-60 h-60 rounded-full bg-white/10 blur-[60px] animate-float-slow" />
+        </div>
+        <div className="relative max-w-4xl mx-auto px-4 text-center animate-fade-in-up">
+          <div className="w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center mx-auto mb-6 border border-white/30">
+            <Sprout className="w-8 h-8" />
+          </div>
+          <h1 className="text-4xl md:text-5xl font-[family-name:var(--font-playfair)] mb-4">{t.about.title}</h1>
+          <p className="text-white/80 text-lg max-w-2xl mx-auto">
+            Empowering farmers with premium agricultural solutions
+          </p>
         </div>
       </section>
 
       {/* Mission */}
-      <section className="max-w-5xl mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <section className="relative max-w-6xl mx-auto px-4 py-20 md:py-28">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center animate-fade-in-up">
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <Target className="w-6 h-6 text-green-600" />
-              <h2 className="text-2xl font-bold text-gray-800">{t.about.mission}</h2>
+            <p className="uppercase tracking-[0.2em] text-gold text-sm font-semibold mb-4">Purpose</p>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-green-primary/10 to-green-muted/10 flex items-center justify-center">
+                <Target className="w-6 h-6 text-green-primary" />
+              </div>
+              <h2 className="text-3xl font-[family-name:var(--font-playfair)] text-charcoal">{t.about.mission}</h2>
             </div>
-            <p className="text-gray-600 leading-relaxed">{t.about.missionText}</p>
+            <p className="text-charcoal-muted leading-relaxed text-lg">{t.about.missionText}</p>
           </div>
-          <div className="bg-green-50 rounded-2xl p-8">
+          <div className="bg-white/80 backdrop-blur-xl rounded-3xl border border-sand/40 shadow-xl overflow-hidden hover:-translate-y-1 hover:shadow-lg transition-all duration-500">
             <img
               src="https://images.pexels.com/photos/2589457/pexels-photo-2589457.jpeg?w=600"
               alt="Mission"
-              className="w-full h-64 object-cover rounded-xl"
+              className="w-full h-72 object-cover hover:scale-105 transition-transform duration-700"
             />
           </div>
         </div>
       </section>
 
+      <div className="h-px bg-gradient-to-r from-transparent via-sand-dark to-transparent max-w-5xl mx-auto" />
+
       {/* Vision */}
-      <section className="bg-green-50 py-16">
-        <div className="max-w-5xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="order-2 md:order-1">
+      <section className="relative max-w-6xl mx-auto px-4 py-20 md:py-28">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center animate-fade-in-up">
+          <div className="order-2 md:order-1">
+            <div className="bg-white/80 backdrop-blur-xl rounded-3xl border border-sand/40 shadow-xl overflow-hidden hover:-translate-y-1 hover:shadow-lg transition-all duration-500">
               <img
                 src="https://images.pexels.com/photos/1105019/pexels-photo-1105019.jpeg?w=600"
                 alt="Vision"
-                className="w-full h-64 object-cover rounded-xl"
+                className="w-full h-72 object-cover hover:scale-105 transition-transform duration-700"
               />
             </div>
-            <div className="order-1 md:order-2">
-              <div className="flex items-center gap-2 mb-4">
-                <Eye className="w-6 h-6 text-green-600" />
-                <h2 className="text-2xl font-bold text-gray-800">{t.about.vision}</h2>
+          </div>
+          <div className="order-1 md:order-2">
+            <p className="uppercase tracking-[0.2em] text-gold text-sm font-semibold mb-4">Aspiration</p>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-green-primary/10 to-green-muted/10 flex items-center justify-center">
+                <Eye className="w-6 h-6 text-green-primary" />
               </div>
-              <p className="text-gray-600 leading-relaxed">{t.about.visionText}</p>
+              <h2 className="text-3xl font-[family-name:var(--font-playfair)] text-charcoal">{t.about.vision}</h2>
             </div>
+            <p className="text-charcoal-muted leading-relaxed text-lg">{t.about.visionText}</p>
           </div>
         </div>
       </section>
+
+      <div className="h-px bg-gradient-to-r from-transparent via-sand-dark to-transparent max-w-5xl mx-auto" />
 
       {/* Values */}
-      <section className="max-w-5xl mx-auto px-4 py-16">
-        <div className="text-center mb-12">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <Heart className="w-6 h-6 text-green-600" />
-            <h2 className="text-2xl font-bold text-gray-800">{t.about.values}</h2>
+      <section className="relative max-w-6xl mx-auto px-4 py-20 md:py-28">
+        <div className="text-center mb-16 animate-fade-in-up">
+          <p className="uppercase tracking-[0.2em] text-gold text-sm font-semibold mb-4">Principles</p>
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-green-primary/10 to-green-muted/10 flex items-center justify-center">
+              <Heart className="w-6 h-6 text-green-primary" />
+            </div>
+            <h2 className="text-3xl font-[family-name:var(--font-playfair)] text-charcoal">{t.about.values}</h2>
           </div>
         </div>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 text-center">
-            <Shield className="w-8 h-8 text-green-600 mx-auto mb-3" />
-            <h3 className="font-bold text-green-700 mb-2">{t.about.quality}</h3>
-            <p className="text-sm text-gray-600">{t.about.qualityDesc}</p>
-          </div>
-          <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 text-center">
-            <Heart className="w-8 h-8 text-green-600 mx-auto mb-3" />
-            <h3 className="font-bold text-green-700 mb-2">{t.about.trust}</h3>
-            <p className="text-sm text-gray-600">{t.about.trustDesc}</p>
-          </div>
-          <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 text-center">
-            <Headphones className="w-8 h-8 text-green-600 mx-auto mb-3" />
-            <h3 className="font-bold text-green-700 mb-2">{t.about.support}</h3>
-            <p className="text-sm text-gray-600">{t.about.supportDesc}</p>
-          </div>
-          <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 text-center">
-            <Truck className="w-8 h-8 text-green-600 mx-auto mb-3" />
-            <h3 className="font-bold text-green-700 mb-2">{t.about.delivery}</h3>
-            <p className="text-sm text-gray-600">{t.about.deliveryDesc}</p>
-          </div>
+          {[
+            { icon: Shield, title: t.about.quality, desc: t.about.qualityDesc, delay: "100" },
+            { icon: Heart, title: t.about.trust, desc: t.about.trustDesc, delay: "200" },
+            { icon: Headphones, title: t.about.support, desc: t.about.supportDesc, delay: "300" },
+            { icon: Truck, title: t.about.delivery, desc: t.about.deliveryDesc, delay: "400" },
+          ].map((item, idx) => (
+            <div
+              key={idx}
+              className={`bg-white/80 backdrop-blur-xl rounded-3xl border border-sand/40 shadow-xl p-8 text-center hover:-translate-y-1 hover:shadow-lg hover:border-green-primary/30 transition-all duration-500 animate-fade-in-up delay-${item.delay}`}
+            >
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-green-primary/10 to-green-muted/10 flex items-center justify-center mx-auto mb-5">
+                <item.icon className="w-7 h-7 text-green-primary" />
+              </div>
+              <h3 className="font-[family-name:var(--font-playfair)] font-bold text-charcoal mb-2 text-lg">{item.title}</h3>
+              <p className="text-sm text-charcoal-muted leading-relaxed">{item.desc}</p>
+            </div>
+          ))}
         </div>
       </section>
 
+      <div className="h-px bg-gradient-to-r from-transparent via-sand-dark to-transparent max-w-5xl mx-auto" />
+
       {/* Founder */}
-      <section className="bg-green-800 text-white py-16">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-2xl font-bold mb-4">{t.about.founder}</h2>
-          <div>
-            <div className="w-20 h-20 bg-green-600 rounded-full mx-auto mb-3 flex items-center justify-center">
-              <span className="text-2xl font-bold">B</span>
-            </div>
+      <section className="relative py-20 md:py-28 bg-gradient-to-br from-green-dark via-green-primary to-green-light text-white overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-20 right-20 w-80 h-80 rounded-full bg-white/20 blur-[80px] animate-float" />
+        </div>
+        <div className="relative max-w-4xl mx-auto px-4 text-center animate-fade-in-up">
+          <p className="uppercase tracking-[0.2em] text-white/60 text-sm font-semibold mb-4">Leadership</p>
+          <h2 className="text-3xl md:text-4xl font-[family-name:var(--font-playfair)] mb-8">{t.about.founder}</h2>
+          <div className="w-24 h-24 bg-white/20 backdrop-blur-md rounded-3xl mx-auto mb-6 flex items-center justify-center border border-white/30">
+            <span className="text-3xl font-[family-name:var(--font-playfair)] font-bold">B</span>
           </div>
+          <p className="text-white/70 max-w-lg mx-auto leading-relaxed">
+            Dedicated to transforming the agricultural landscape through innovation and farmer-first principles.
+          </p>
         </div>
       </section>
 
       {/* Journey */}
-      <section className="max-w-5xl mx-auto px-4 py-16">
-        <div className="text-center mb-12">
-          <h2 className="text-2xl font-bold text-gray-800">{t.about.journey}</h2>
+      <section className="relative max-w-6xl mx-auto px-4 py-20 md:py-28">
+        <div className="text-center mb-16 animate-fade-in-up">
+          <p className="uppercase tracking-[0.2em] text-gold text-sm font-semibold mb-4">Timeline</p>
+          <h2 className="text-3xl md:text-4xl font-[family-name:var(--font-playfair)] text-charcoal">{t.about.journey}</h2>
         </div>
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="text-center">
-            <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
-              <span className="text-green-700 font-bold">1</span>
+          {[
+            { num: "01", title: t.hero.slide2.title, desc: t.hero.slide2.description, delay: "100" },
+            { num: "02", title: t.hero.slide1.title, desc: t.hero.slide1.description, delay: "200" },
+            { num: "03", title: t.hero.slide3.title, desc: t.hero.slide3.description, delay: "300" },
+          ].map((item, idx) => (
+            <div
+              key={idx}
+              className={`bg-white/80 backdrop-blur-xl rounded-3xl border border-sand/40 shadow-xl p-8 text-center hover:-translate-y-1 hover:shadow-lg hover:border-green-primary/30 transition-all duration-500 animate-fade-in-up delay-${item.delay}`}
+            >
+              <div className="w-14 h-14 bg-gradient-to-br from-green-primary to-green-light text-white rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-lg">
+                <span className="text-lg font-bold font-[family-name:var(--font-playfair)]">{item.num}</span>
+              </div>
+              <h3 className="font-[family-name:var(--font-playfair)] font-bold text-charcoal mb-3 text-lg">{item.title}</h3>
+              <p className="text-sm text-charcoal-muted leading-relaxed">{item.desc}</p>
             </div>
-            <h3 className="font-bold text-gray-800 mb-2">{t.hero.slide2.title}</h3>
-            <p className="text-sm text-gray-600">{t.hero.slide2.description}</p>
-          </div>
-          <div className="text-center">
-            <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
-              <span className="text-green-700 font-bold">2</span>
-            </div>
-            <h3 className="font-bold text-gray-800 mb-2">{t.hero.slide1.title}</h3>
-            <p className="text-sm text-gray-600">{t.hero.slide1.description}</p>
-          </div>
-          <div className="text-center">
-            <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
-              <span className="text-green-700 font-bold">3</span>
-            </div>
-            <h3 className="font-bold text-gray-800 mb-2">{t.hero.slide3.title}</h3>
-            <p className="text-sm text-gray-600">{t.hero.slide3.description}</p>
-          </div>
+          ))}
         </div>
       </section>
     </div>

@@ -8,60 +8,146 @@ export default function Footer() {
   const { t } = useLanguage();
 
   return (
-    <footer className="bg-green-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div>
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <Sprout className="text-green-400" size={28} />
-              <span className="text-xl font-bold">{t.site.name}</span>
+    <footer className="relative bg-gradient-to-b from-green-dark to-charcoal text-white overflow-hidden">
+      {/* Ambient blobs */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="ambient-blob -top-20 -left-20 h-80 w-80 bg-green-muted/5" />
+        <div className="ambient-blob top-1/3 right-0 h-60 w-60 bg-gold/4" />
+        <div className="ambient-blob -bottom-20 left-1/3 h-60 w-60 bg-green-primary/5" />
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-4 pt-16 pb-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+          {/* Brand */}
+          <div className="md:col-span-1">
+            <Link href="/" className="flex items-center gap-2.5 mb-5 group">
+              <Sprout
+                className="text-green-muted transition-colors duration-500 group-hover:text-gold"
+                size={28}
+                strokeWidth={1.5}
+              />
+              <span className="text-xl font-[family-name:var(--font-playfair)] font-bold">
+                {t.site.name}{" "}
+                <span className="text-gold">.</span>
+              </span>
             </Link>
-            <p className="text-green-200 text-sm">{t.site.description}</p>
+            <p className="text-white/50 text-sm leading-relaxed max-w-[260px]">
+              {t.site.description}
+            </p>
           </div>
 
+          {/* Company Links */}
           <div>
-            <h3 className="font-bold text-lg mb-4">{t.footer.company}</h3>
-            <ul className="space-y-2 text-green-200 text-sm">
-              <li><Link href="/about" className="hover:text-white">{t.nav.about}</Link></li>
-              <li><Link href="/products" className="hover:text-white">{t.nav.products}</Link></li>
-              <li><Link href="/products/seeds" className="hover:text-white">{t.nav.seeds}</Link></li>
-              <li><Link href="/products/fertilizers" className="hover:text-white">{t.nav.fertilizers}</Link></li>
+            <h3 className="text-xs font-medium uppercase tracking-[0.2em] text-gold mb-5">
+              {t.footer.company}
+            </h3>
+            <ul className="space-y-3">
+              {[
+                { href: "/about", label: t.nav.about },
+                { href: "/products", label: t.nav.products },
+                { href: "/products/seeds", label: t.nav.seeds },
+                { href: "/products/fertilizers", label: t.nav.fertilizers },
+              ].map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="group flex items-center text-sm text-white/50 hover:text-green-muted transition-all duration-500"
+                  >
+                    <span className="inline-block group-hover:translate-x-1 transition-transform duration-500">
+                      {link.label}
+                    </span>
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
+          {/* Helpful Links */}
           <div>
-            <h3 className="font-bold text-lg mb-4">{t.footer.helpfulLinks}</h3>
-            <ul className="space-y-2 text-green-200 text-sm">
-              <li><Link href="/comingsoon" className="hover:text-white">{t.footer.faq}</Link></li>
-              <li><Link href="/comingsoon" className="hover:text-white">{t.footer.shippingPolicy}</Link></li>
-              <li><Link href="/comingsoon" className="hover:text-white">{t.footer.returnPolicy}</Link></li>
-              <li><Link href="/comingsoon" className="hover:text-white">{t.footer.privacyPolicy}</Link></li>
-              <li><Link href="/comingsoon" className="hover:text-white">{t.footer.terms}</Link></li>
-              <li><Link href="/comingsoon" className="hover:text-white">{t.footer.refundPolicy}</Link></li>
+            <h3 className="text-xs font-medium uppercase tracking-[0.2em] text-gold mb-5">
+              {t.footer.helpfulLinks}
+            </h3>
+            <ul className="space-y-3">
+              {[
+                { href: "/comingsoon", label: t.footer.faq },
+                { href: "/comingsoon", label: t.footer.shippingPolicy },
+                { href: "/comingsoon", label: t.footer.returnPolicy },
+                { href: "/comingsoon", label: t.footer.privacyPolicy },
+                { href: "/comingsoon", label: t.footer.terms },
+                { href: "/comingsoon", label: t.footer.refundPolicy },
+              ].map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="group flex items-center text-sm text-white/50 hover:text-green-muted transition-all duration-500"
+                  >
+                    <span className="inline-block group-hover:translate-x-1 transition-transform duration-500">
+                      {link.label}
+                    </span>
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
+          {/* Contact */}
           <div>
-            <h3 className="font-bold text-lg mb-4">{t.footer.contact}</h3>
-            <ul className="space-y-3 text-green-200 text-sm">
-              <li className="flex items-start gap-2">
-                <MapPin size={16} className="mt-0.5 shrink-0" />
-                <span>{t.footer.address}</span>
+            <h3 className="text-xs font-medium uppercase tracking-[0.2em] text-gold mb-5">
+              {t.footer.contact}
+            </h3>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3 text-sm text-white/50 group">
+                <MapPin
+                  size={16}
+                  strokeWidth={1.5}
+                  className="mt-0.5 shrink-0 text-green-muted/60 group-hover:text-green-muted transition-colors duration-500"
+                />
+                <span className="group-hover:text-white/70 transition-colors duration-500">
+                  {t.footer.address}
+                </span>
               </li>
-              <li className="flex items-center gap-2">
-                <Phone size={16} className="shrink-0" />
-                <a href="tel:+919381935889" className="hover:text-white">{t.footer.phone}</a>
+              <li className="group">
+                <a
+                  href="tel:+919381935889"
+                  className="flex items-center gap-3 text-sm text-white/50 hover:text-green-muted transition-all duration-500"
+                >
+                  <Phone
+                    size={16}
+                    strokeWidth={1.5}
+                    className="shrink-0 text-green-muted/60 group-hover:text-green-muted transition-colors duration-500"
+                  />
+                  <span>{t.footer.phone}</span>
+                </a>
               </li>
-              <li className="flex items-center gap-2">
-                <Mail size={16} className="shrink-0" />
-                <a href="mailto:support@bhoomiputhrudu.com" className="hover:text-white">{t.footer.email}</a>
+              <li className="group">
+                <a
+                  href="mailto:support@bhoomiputhrudu.com"
+                  className="flex items-center gap-3 text-sm text-white/50 hover:text-green-muted transition-all duration-500"
+                >
+                  <Mail
+                    size={16}
+                    strokeWidth={1.5}
+                    className="shrink-0 text-green-muted/60 group-hover:text-green-muted transition-colors duration-500"
+                  />
+                  <span>{t.footer.email}</span>
+                </a>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="border-t border-green-700 mt-8 pt-8 text-center text-green-300 text-sm">
-          <p>{t.footer.copyright}</p>
+        {/* Gradient Divider */}
+        <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent my-10" />
+
+        {/* Copyright */}
+        <div className="text-center">
+          <p className="text-xs text-white/30 tracking-wider">
+            &copy; {new Date().getFullYear()}{" "}
+            <span className="bg-gradient-to-r from-green-muted to-gold bg-clip-text text-transparent font-medium">
+              {t.site.name}
+            </span>
+            . All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/store/language";
 import Header from "@/components/Header";
@@ -10,6 +10,11 @@ import { Toaster } from "react-hot-toast";
 
 const inter = Inter({
   variable: "--font-inter",
+  subsets: ["latin"],
+});
+
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin"],
 });
 
@@ -25,7 +30,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} h-full`}>
+    <html lang="en" className={`${inter.variable} ${playfair.variable} h-full`}>
       <body className="min-h-full flex flex-col font-[family-name:var(--font-inter)]">
         <LanguageProvider>
           <Header />
@@ -33,7 +38,17 @@ export default function RootLayout({
           <main className="flex-1">{children}</main>
           <Footer />
           <WhatsAppButton />
-          <Toaster position="top-right" />
+          <Toaster
+            position="top-right"
+            toastOptions={{
+              style: {
+                borderRadius: "16px",
+                background: "#fff",
+                color: "#2c2c2c",
+                boxShadow: "0 8px 32px rgba(0,0,0,0.08)",
+              },
+            }}
+          />
         </LanguageProvider>
       </body>
     </html>

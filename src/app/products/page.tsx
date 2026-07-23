@@ -47,56 +47,74 @@ export default function ProductsPage() {
   const { t } = useLanguage();
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h1 className="text-3xl font-bold text-green-800">{t.allProducts}</h1>
-          <p className="text-gray-600 mt-2">{t.browseCategories}</p>
+    <div className="relative min-h-screen bg-ivory overflow-hidden">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -right-32 -top-32 h-[500px] w-[500px] rounded-full bg-green-primary/[0.04] blur-[100px] animate-pulse-glow" />
+        <div className="absolute -left-20 bottom-20 h-[400px] w-[400px] rounded-full bg-green-muted/20 blur-[80px] animate-float-slow" />
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+        <div className="text-center mb-16 animate-fade-in-up">
+          <p className="uppercase tracking-[0.2em] text-gold text-sm font-semibold mb-4">Our Collection</p>
+          <h1 className="text-4xl md:text-5xl font-[family-name:var(--font-playfair)] text-charcoal mb-4">
+            {t.allProducts}
+          </h1>
+          <p className="text-charcoal-muted text-lg max-w-2xl mx-auto">
+            {t.browseCategories}
+          </p>
         </div>
 
-        <div className="space-y-8">
-          {productCategories.map((cat) => {
+        <div className="space-y-10">
+          {productCategories.map((cat, idx) => {
             const Icon = cat.icon;
             return (
-              <div key={cat.key} className="bg-white rounded-2xl shadow-sm overflow-hidden">
-                <div className="relative h-48 md:h-64">
+              <div
+                key={cat.key}
+                className={`bg-white/80 backdrop-blur-xl rounded-3xl border border-sand/40 shadow-xl overflow-hidden animate-fade-in-up delay-${(idx + 1) * 200}`}
+              >
+                <div className="relative h-52 md:h-72">
                   <img
                     src={cat.image}
                     alt={t[cat.key] || cat.key}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
-                    <div className="flex items-center gap-3 text-white">
-                      <Icon className="w-8 h-8" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end p-8">
+                    <div className="flex items-center gap-4 text-white">
+                      <div className="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30">
+                        <Icon className="w-7 h-7" />
+                      </div>
                       <div>
-                        <h2 className="text-2xl font-bold">{t[cat.key] || cat.key}</h2>
-                        <p className="text-sm opacity-80">
+                        <h2 className="text-2xl md:text-3xl font-[family-name:var(--font-playfair)]">
+                          {t[cat.key] || cat.key}
+                        </h2>
+                        <p className="text-sm opacity-80 mt-1">
                           {cat.subcategories.length} {t.subcategories}
                         </p>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="p-6">
+                <div className="p-8">
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                    {cat.subcategories.map((sub) => (
+                    {cat.subcategories.map((sub, sIdx) => (
                       <Link
                         key={sub.key}
                         href={`/products/${cat.key}/${encodeURIComponent(sub.key)}`}
-                        className="flex items-center justify-between p-3 rounded-lg border border-gray-200 hover:border-green-300 hover:bg-green-50 transition-colors group"
+                        className={`flex items-center justify-between p-4 rounded-2xl border border-sand/50 hover:border-green-primary/30 hover:bg-green-pale/30 transition-all duration-500 hover:-translate-y-0.5 hover:shadow-md group animate-fade-in delay-${(sIdx + 1) * 100}`}
                       >
-                        <span className="text-sm font-medium text-gray-700 group-hover:text-green-700">
+                        <span className="text-sm font-medium text-charcoal group-hover:text-green-primary transition-colors duration-300">
                           {t[sub.label] || sub.key}
                         </span>
-                        <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-green-600" />
+                        <ChevronRight className="w-4 h-4 text-charcoal-muted group-hover:text-green-primary group-hover:translate-x-1 transition-all duration-300" />
                       </Link>
                     ))}
                   </div>
                   <Link
                     href={`/products/${cat.key}`}
-                    className="inline-block mt-4 text-green-600 font-semibold text-sm hover:underline"
+                    className="inline-flex items-center gap-2 mt-6 text-green-primary font-semibold text-sm hover:gap-3 transition-all duration-500"
                   >
-                    {t.viewAll} {t[cat.key] || cat.key} →
+                    {t.viewAll} {t[cat.key] || cat.key}
+                    <ChevronRight className="w-4 h-4" />
                   </Link>
                 </div>
               </div>

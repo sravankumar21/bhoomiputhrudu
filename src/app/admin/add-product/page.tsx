@@ -82,77 +82,67 @@ export default function AddProductPage() {
     }
   };
 
+  const inputClass =
+    "w-full px-4 py-3 bg-white/60 backdrop-blur-sm border border-sand/60 rounded-2xl text-sm text-charcoal outline-none focus:ring-2 focus:ring-green-primary/30 focus:border-green-primary/50 transition-all duration-500 placeholder:text-charcoal-muted/60";
+
+  const labelClass = "block text-sm font-semibold text-charcoal mb-2";
+
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-2xl mx-auto px-4">
-        <div className="flex items-center gap-4 mb-8">
-          <Link href="/admin" className="text-green-600 hover:text-green-700">
+    <div className="relative min-h-screen bg-ivory overflow-hidden">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -right-32 -top-32 h-[500px] w-[500px] rounded-full bg-green-primary/[0.04] blur-[100px] animate-pulse-glow" />
+        <div className="absolute -left-20 bottom-20 h-[400px] w-[400px] rounded-full bg-green-muted/20 blur-[80px] animate-float-slow" />
+      </div>
+
+      <div className="relative max-w-2xl mx-auto px-4 py-12 md:py-16">
+        <div className="flex items-center gap-4 mb-10 animate-fade-in-up">
+          <Link
+            href="/admin"
+            className="w-10 h-10 rounded-full bg-white/80 backdrop-blur-xl border border-sand/40 flex items-center justify-center text-charcoal hover:text-green-primary hover:border-green-primary/30 transition-all duration-500"
+          >
             <ArrowLeft className="w-5 h-5" />
           </Link>
-          <h1 className="text-2xl font-bold text-gray-800">{t.addNewProduct}</h1>
+          <div>
+            <p className="uppercase tracking-[0.2em] text-gold text-xs font-semibold">Products</p>
+            <h1 className="text-2xl md:text-3xl font-[family-name:var(--font-playfair)] text-charcoal">{t.addNewProduct}</h1>
+          </div>
         </div>
 
-        <form onSubmit={handleSubmit} className="bg-white rounded-xl shadow-sm p-6 space-y-5">
+        <form
+          onSubmit={handleSubmit}
+          className="bg-white/80 backdrop-blur-xl rounded-3xl border border-sand/40 shadow-xl p-8 md:p-10 space-y-6 animate-fade-in-up delay-200"
+        >
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">{t.productName} *</label>
-            <input
-              type="text"
-              name="name"
-              value={form.name}
-              onChange={handleChange}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-green-500"
-              required
-            />
+            <label className={labelClass}>{t.productName} *</label>
+            <input type="text" name="name" value={form.name} onChange={handleChange} className={inputClass} required />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">{t.description}</label>
+            <label className={labelClass}>{t.description}</label>
             <textarea
               name="description"
               value={form.description}
               onChange={handleChange}
               rows={3}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-green-500 resize-none"
+              className={`${inputClass} resize-none`}
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-5">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">{t.price} *</label>
-              <input
-                type="number"
-                name="price"
-                value={form.price}
-                onChange={handleChange}
-                min="0"
-                step="0.01"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-green-500"
-                required
-              />
+              <label className={labelClass}>{t.price} *</label>
+              <input type="number" name="price" value={form.price} onChange={handleChange} min="0" step="0.01" className={inputClass} required />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">{t.stock}</label>
-              <input
-                type="number"
-                name="stock"
-                value={form.stock}
-                onChange={handleChange}
-                min="0"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-green-500"
-              />
+              <label className={labelClass}>{t.stock}</label>
+              <input type="number" name="stock" value={form.stock} onChange={handleChange} min="0" className={inputClass} />
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-5">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">{t.category} *</label>
-              <select
-                name="category"
-                value={form.category}
-                onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-green-500 bg-white"
-                required
-              >
+              <label className={labelClass}>{t.category} *</label>
+              <select name="category" value={form.category} onChange={handleChange} className={`${inputClass} bg-white`} required>
                 <option value="">{t.selectCategory}</option>
                 {categoryOptions.map((c) => (
                   <option key={c} value={c}>{c}</option>
@@ -160,14 +150,8 @@ export default function AddProductPage() {
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">{t.subcategory}</label>
-              <select
-                name="subcategory"
-                value={form.subcategory}
-                onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-green-500 bg-white"
-                disabled={!form.category}
-              >
+              <label className={labelClass}>{t.subcategory}</label>
+              <select name="subcategory" value={form.subcategory} onChange={handleChange} className={`${inputClass} bg-white`} disabled={!form.category}>
                 <option value="">{t.selectSubcategory}</option>
                 {(subcategoryMap[form.category] || []).map((s) => (
                   <option key={s} value={s}>{s}</option>
@@ -177,38 +161,30 @@ export default function AddProductPage() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">{t.unit}</label>
-            <input
-              type="text"
-              name="unit"
-              value={form.unit}
-              onChange={handleChange}
-              placeholder="e.g. kg, piece, litre"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-green-500"
-            />
+            <label className={labelClass}>{t.unit}</label>
+            <input type="text" name="unit" value={form.unit} onChange={handleChange} placeholder="e.g. kg, piece, litre" className={inputClass} />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">{t.imageUrl}</label>
-            <input
-              type="url"
-              name="image"
-              value={form.image}
-              onChange={handleChange}
-              placeholder="https://..."
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-green-500"
-            />
+            <label className={labelClass}>{t.imageUrl}</label>
+            <input type="url" name="image" value={form.image} onChange={handleChange} placeholder="https://..." className={inputClass} />
             {form.image && (
-              <img src={form.image} alt="Preview" className="mt-3 w-32 h-32 object-cover rounded-lg" />
+              <div className="mt-4 rounded-2xl overflow-hidden border border-sand/40">
+                <img src={form.image} alt="Preview" className="w-32 h-32 object-cover" />
+              </div>
             )}
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 disabled:opacity-50 transition-colors flex items-center justify-center gap-2"
+            className="w-full bg-gradient-to-r from-green-primary to-green-light text-white rounded-full py-3.5 font-semibold hover:from-green-light hover:to-green-primary shadow-lg hover:shadow-xl disabled:opacity-50 transition-all duration-500 flex items-center justify-center gap-2"
           >
-            <Upload className="w-5 h-5" />
+            {loading ? (
+              <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+            ) : (
+              <Upload className="w-5 h-5" />
+            )}
             {loading ? t.adding : t.addProduct}
           </button>
         </form>

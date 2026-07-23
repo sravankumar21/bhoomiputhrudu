@@ -68,73 +68,94 @@ export default function ManageFarmersPage() {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center gap-4 mb-8">
-          <Link href="/admin" className="text-green-600 hover:text-green-700">
+    <div className="relative min-h-screen bg-ivory overflow-hidden">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -right-32 -top-32 h-[500px] w-[500px] rounded-full bg-green-primary/[0.04] blur-[100px] animate-pulse-glow" />
+        <div className="absolute -left-20 bottom-20 h-[400px] w-[400px] rounded-full bg-green-muted/20 blur-[80px] animate-float-slow" />
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+        <div className="flex items-center gap-4 mb-10 animate-fade-in-up">
+          <Link
+            href="/admin"
+            className="w-10 h-10 rounded-full bg-white/80 backdrop-blur-xl border border-sand/40 flex items-center justify-center text-charcoal hover:text-green-primary hover:border-green-primary/30 transition-all duration-500"
+          >
             <ArrowLeft className="w-5 h-5" />
           </Link>
-          <h1 className="text-2xl font-bold text-gray-800">{t.manageFarmers}</h1>
+          <div>
+            <p className="uppercase tracking-[0.2em] text-gold text-xs font-semibold">Farmers</p>
+            <h1 className="text-2xl md:text-3xl font-[family-name:var(--font-playfair)] text-charcoal">{t.manageFarmers}</h1>
+          </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm p-4 mb-6 flex items-center gap-3">
-          <Search className="w-5 h-5 text-gray-400" />
+        <div className="bg-white/80 backdrop-blur-xl rounded-3xl border border-sand/40 shadow-xl p-5 mb-8 flex items-center gap-4 animate-fade-in-up delay-100">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-green-primary/10 to-green-muted/10 flex items-center justify-center">
+            <Search className="w-5 h-5 text-green-primary" />
+          </div>
           <input
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder={t.searchFarmers}
-            className="flex-1 outline-none text-sm"
+            className="flex-1 bg-transparent outline-none text-sm text-charcoal placeholder:text-charcoal-muted/60"
           />
         </div>
 
         {loading ? (
-          <div className="text-center py-20 text-gray-500">{t.loading}</div>
+          <div className="flex items-center justify-center py-32">
+            <div className="w-12 h-12 border-4 border-green-primary/20 border-t-green-primary rounded-full animate-spin" />
+          </div>
         ) : filtered.length === 0 ? (
-          <div className="text-center py-20 text-gray-500">
-            <Users className="w-12 h-12 mx-auto mb-3 text-gray-400" />
-            {t.noFarmersFound}
+          <div className="text-center py-32 animate-fade-in-up">
+            <div className="w-20 h-20 rounded-full bg-sand/30 flex items-center justify-center mx-auto mb-6">
+              <Users className="w-10 h-10 text-charcoal-muted" />
+            </div>
+            <p className="text-xl font-[family-name:var(--font-playfair)] text-charcoal">{t.noFarmersFound}</p>
           </div>
         ) : (
-          <div className="bg-white rounded-xl shadow-sm overflow-hidden">
+          <div className="bg-white/80 backdrop-blur-xl rounded-3xl border border-sand/40 shadow-xl overflow-hidden animate-fade-in-up delay-200">
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
-                <thead className="bg-gray-50 text-left">
+                <thead className="bg-sand/20 text-left">
                   <tr>
-                    <th className="px-4 py-3 font-medium text-gray-600">{t.name}</th>
-                    <th className="px-4 py-3 font-medium text-gray-600">{t.mobileNumber}</th>
-                    <th className="px-4 py-3 font-medium text-gray-600">{t.email}</th>
-                    <th className="px-4 py-3 font-medium text-gray-600">{t.registeredOn}</th>
-                    <th className="px-4 py-3 font-medium text-gray-600 text-right">{t.actions}</th>
+                    <th className="px-6 py-4 font-semibold text-charcoal-muted text-xs uppercase tracking-wider">{t.name}</th>
+                    <th className="px-6 py-4 font-semibold text-charcoal-muted text-xs uppercase tracking-wider">{t.mobileNumber}</th>
+                    <th className="px-6 py-4 font-semibold text-charcoal-muted text-xs uppercase tracking-wider">{t.email}</th>
+                    <th className="px-6 py-4 font-semibold text-charcoal-muted text-xs uppercase tracking-wider">{t.registeredOn}</th>
+                    <th className="px-6 py-4 font-semibold text-charcoal-muted text-xs uppercase tracking-wider text-right">{t.actions}</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-100">
-                  {filtered.map((farmer) => (
-                    <tr key={farmer._id} className="hover:bg-gray-50">
-                      <td className="px-4 py-3">
+                <tbody className="divide-y divide-sand/30">
+                  {filtered.map((farmer, idx) => (
+                    <tr key={farmer._id} className={`hover:bg-green-pale/10 transition-colors duration-300 animate-fade-in delay-${Math.min((idx + 1) * 50, 300)}`}>
+                      <td className="px-6 py-4">
                         <div className="flex items-center gap-3">
-                          <div className="w-9 h-9 bg-green-100 text-green-700 rounded-full flex items-center justify-center font-bold text-sm">
+                          <div className="w-10 h-10 bg-gradient-to-br from-green-primary to-green-light text-white rounded-xl flex items-center justify-center font-bold text-sm shadow-md">
                             {farmer.firstname?.[0]}{farmer.lastname?.[0]}
                           </div>
-                          <span className="font-medium">
+                          <span className="font-medium text-charcoal">
                             {farmer.firstname} {farmer.lastname}
                           </span>
                         </div>
                       </td>
-                      <td className="px-4 py-3 text-gray-600">{farmer.mobile_no}</td>
-                      <td className="px-4 py-3 text-gray-600">{farmer.email || "—"}</td>
-                      <td className="px-4 py-3 text-gray-600">
+                      <td className="px-6 py-4 text-charcoal-muted">{farmer.mobile_no}</td>
+                      <td className="px-6 py-4 text-charcoal-muted">{farmer.email || "—"}</td>
+                      <td className="px-6 py-4 text-charcoal-muted">
                         {farmer.registration_Date
                           ? new Date(farmer.registration_Date).toLocaleDateString()
                           : "—"}
                       </td>
-                      <td className="px-4 py-3 text-right">
+                      <td className="px-6 py-4 text-right">
                         <button
                           onClick={() => deleteFarmer(farmer._id)}
                           disabled={deletingId === farmer._id}
-                          className="text-red-500 hover:text-red-700 disabled:opacity-50"
+                          className="w-9 h-9 rounded-xl bg-red-50 text-red-500 hover:bg-red-100 hover:text-red-700 disabled:opacity-50 flex items-center justify-center transition-all duration-300"
                         >
-                          <Trash2 className="w-4 h-4" />
+                          {deletingId === farmer._id ? (
+                            <div className="w-4 h-4 border-2 border-red-300 border-t-red-600 rounded-full animate-spin" />
+                          ) : (
+                            <Trash2 className="w-4 h-4" />
+                          )}
                         </button>
                       </td>
                     </tr>
