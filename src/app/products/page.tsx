@@ -1,127 +1,81 @@
 "use client";
 
 import Link from "next/link";
-import { Sprout, Pill, Bug, ChevronRight } from "lucide-react";
+import { Wheat, Droplets, Bug, Wrench, TreeDeciduous, ChevronRight } from "lucide-react";
 import { useLanguage } from "@/store/language";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
-const productCategories = [
-  {
-    key: "Seeds",
-    icon: Sprout,
-    image: "https://images.pexels.com/photos/2589457/pexels-photo-2589457.jpeg?w=400",
-    subcategories: [
-      { key: "Vegetable Seeds", label: "vegetableSeeds" },
-      { key: "Fruit Seeds", label: "fruitSeeds" },
-      { key: "Flower Seeds", label: "flowerSeeds" },
-      { key: "Grain Seeds", label: "grainSeeds" },
-      { key: "Herb Seeds", label: "herbSeeds" },
-    ],
-  },
-  {
-    key: "Fertilizers",
-    icon: Pill,
-    image: "https://images.pexels.com/photos/5591879/pexels-photo-5591879.jpeg?w=400",
-    subcategories: [
-      { key: "Organic Fertilizers", label: "organicFertilizers" },
-      { key: "Chemical Fertilizers", label: "chemicalFertilizers" },
-      { key: "Bio Fertilizers", label: "bioFertilizers" },
-      { key: "Micronutrients", label: "micronutrients" },
-      { key: "Soil Conditioners", label: "soilConditioners" },
-    ],
-  },
-  {
-    key: "Pesticides",
-    icon: Bug,
-    image: "https://images.pexels.com/photos/5591883/pexels-photo-5591883.jpeg?w=400",
-    subcategories: [
-      { key: "Insecticides", label: "insecticides" },
-      { key: "Fungicides", label: "fungicides" },
-      { key: "Herbicides", label: "herbicides" },
-      { key: "Rodenticides", label: "rodenticides" },
-      { key: "Bio Pesticides", label: "bioPesticides" },
-    ],
-  },
+const categoryData = [
+  { key: "seeds", icon: Wheat, image: "https://images.pexels.com/photos/2589457/pexels-photo-2589457.jpeg?w=600", desc: "Premium quality seeds for all seasons" },
+  { key: "fertilizers", icon: Droplets, image: "https://images.pexels.com/photos/5591879/pexels-photo-5591879.jpeg?w=600", desc: "Organic & chemical fertilizers" },
+  { key: "pesticides", icon: Bug, image: "https://images.pexels.com/photos/5591883/pexels-photo-5591883.jpeg?w=600", desc: "Crop protection solutions" },
+  { key: "tools", icon: Wrench, image: "https://images.pexels.com/photos/5591871/pexels-photo-5591871.jpeg?w=600", desc: "Modern farming equipment" },
+  { key: "irrigation", icon: Droplets, image: "https://images.pexels.com/photos/2589458/pexels-photo-2589458.jpeg?w=600", desc: "Drip, sprinkler & micro irrigation" },
+  { key: "organic", icon: TreeDeciduous, image: "https://images.pexels.com/photos/1105019/pexels-photo-1105019.jpeg?w=600", desc: "100% organic farming inputs" },
 ];
 
 export default function ProductsPage() {
   const { t } = useLanguage();
+  const ref = useScrollReveal({ animation: "animate-fade-in-up" });
 
   return (
-    <div className="relative min-h-screen bg-ivory overflow-hidden">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -right-32 -top-32 h-[500px] w-[500px] rounded-full bg-green-primary/[0.04] blur-[100px] animate-pulse-glow" />
-        <div className="absolute -left-20 bottom-20 h-[400px] w-[400px] rounded-full bg-green-muted/20 blur-[80px] animate-float-slow" />
-      </div>
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-        <div className="text-center mb-16 animate-fade-in-up">
-          <p className="uppercase tracking-[0.2em] text-gold text-sm font-semibold mb-4">Our Collection</p>
-          <h1 className="text-4xl md:text-5xl font-[family-name:var(--font-playfair)] text-charcoal mb-4">
-            {t.allProducts}
-          </h1>
-          <p className="text-charcoal-muted text-lg max-w-2xl mx-auto">
-            {t.browseCategories}
-          </p>
+    <div className="min-h-screen bg-bg">
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-primary-dark via-primary to-primary-dark py-20 md:py-28 text-white">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="ambient-blob -right-32 -top-32 h-[500px] w-[500px] bg-primary-light/10 animate-pulse-soft" />
+          <div className="ambient-blob -left-20 bottom-20 h-[400px] w-[400px] bg-primary-50/10 animate-float" />
         </div>
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-primary-light mb-4">Our Collection</p>
+          <h1 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold text-white mb-4">{t.nav.products}</h1>
+          <p className="max-w-xl mx-auto text-white/70">{t.browseCategories}</p>
+        </div>
+      </section>
 
-        <div className="space-y-10">
-          {productCategories.map((cat, idx) => {
-            const Icon = cat.icon;
-            return (
-              <div
-                key={cat.key}
-                className={`bg-white/80 backdrop-blur-xl rounded-3xl border border-sand/40 shadow-xl overflow-hidden animate-fade-in-up delay-${(idx + 1) * 200}`}
-              >
-                <div className="relative h-52 md:h-72">
-                  <img
-                    src={cat.image}
-                    alt={t[cat.key] || cat.key}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end p-8">
-                    <div className="flex items-center gap-4 text-white">
-                      <div className="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30">
-                        <Icon className="w-7 h-7" />
+      <div className="gradient-divider" />
+
+      {/* Categories Grid */}
+      <section className="relative overflow-hidden bg-bg py-20 md:py-28">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="ambient-blob -right-32 -top-32 h-[500px] w-[500px] bg-primary/5 animate-pulse-soft" />
+          <div className="ambient-blob -left-20 bottom-20 h-[400px] w-[400px] bg-primary-light/8 animate-float" />
+        </div>
+        <div ref={ref as React.RefObject<HTMLDivElement>} className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {categoryData.map((cat, i) => {
+              const Icon = cat.icon;
+              const catName = t.categories[cat.key as keyof typeof t.categories];
+              return (
+                <Link
+                  key={cat.key}
+                  href={`/products/${cat.key}`}
+                  className={`scroll-hidden delay-${(i + 1) * 100} group relative overflow-hidden rounded-2xl border border-border bg-bg-card shadow-sm transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:-translate-y-1`}
+                >
+                  <div className="relative h-48 overflow-hidden">
+                    <img src={cat.image} alt="" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                  </div>
+                  <div className="p-5">
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-50 transition-all duration-300 group-hover:bg-primary">
+                        <Icon className="h-5 w-5 text-primary transition-colors duration-300 group-hover:text-white" strokeWidth={1.5} />
                       </div>
-                      <div>
-                        <h2 className="text-2xl md:text-3xl font-[family-name:var(--font-playfair)]">
-                          {t[cat.key] || cat.key}
-                        </h2>
-                        <p className="text-sm opacity-80 mt-1">
-                          {cat.subcategories.length} {t.subcategories}
-                        </p>
-                      </div>
+                      <h2 className="font-[family-name:var(--font-playfair)] text-xl font-semibold text-text group-hover:text-primary transition-colors duration-300">
+                        {catName?.name || cat.key}
+                      </h2>
+                    </div>
+                    <p className="text-sm text-text-muted">{catName?.description || cat.desc}</p>
+                    <div className="mt-4 flex items-center gap-1 text-sm font-medium text-primary">
+                      {t.products.viewAll} <ChevronRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                     </div>
                   </div>
-                </div>
-                <div className="p-8">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                    {cat.subcategories.map((sub, sIdx) => (
-                      <Link
-                        key={sub.key}
-                        href={`/products/${cat.key}/${encodeURIComponent(sub.key)}`}
-                        className={`flex items-center justify-between p-4 rounded-2xl border border-sand/50 hover:border-green-primary/30 hover:bg-green-pale/30 transition-all duration-500 hover:-translate-y-0.5 hover:shadow-md group animate-fade-in delay-${(sIdx + 1) * 100}`}
-                      >
-                        <span className="text-sm font-medium text-charcoal group-hover:text-green-primary transition-colors duration-300">
-                          {t[sub.label] || sub.key}
-                        </span>
-                        <ChevronRight className="w-4 h-4 text-charcoal-muted group-hover:text-green-primary group-hover:translate-x-1 transition-all duration-300" />
-                      </Link>
-                    ))}
-                  </div>
-                  <Link
-                    href={`/products/${cat.key}`}
-                    className="inline-flex items-center gap-2 mt-6 text-green-primary font-semibold text-sm hover:gap-3 transition-all duration-500"
-                  >
-                    {t.viewAll} {t[cat.key] || cat.key}
-                    <ChevronRight className="w-4 h-4" />
-                  </Link>
-                </div>
-              </div>
-            );
-          })}
+                </Link>
+              );
+            })}
+          </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 }

@@ -31,11 +31,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable} h-full`}>
-      <body className="min-h-full flex flex-col font-[family-name:var(--font-inter)]">
+      <body className="min-h-full flex flex-col font-[family-name:var(--font-inter)] bg-bg text-text-body">
         <LanguageProvider>
           <Header />
           <Navbar />
-          <main className="flex-1">{children}</main>
+          <main className="flex-1 pt-0 lg:pt-0 pb-16 lg:pb-0">{children}</main>
           <Footer />
           <WhatsAppButton />
           <Toaster
@@ -44,7 +44,7 @@ export default function RootLayout({
               style: {
                 borderRadius: "16px",
                 background: "#fff",
-                color: "#2c2c2c",
+                color: "#1a1a1a",
                 boxShadow: "0 8px 32px rgba(0,0,0,0.08)",
               },
             }}

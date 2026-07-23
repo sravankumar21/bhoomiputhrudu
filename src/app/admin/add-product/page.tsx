@@ -7,6 +7,7 @@ import { ArrowLeft, Upload } from "lucide-react";
 import toast from "react-hot-toast";
 import { useLanguage } from "@/store/language";
 import { useAuthStore } from "@/store/auth";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const categoryOptions = ["Seeds", "Fertilizers", "Pesticides", "Tools", "Irrigation", "Organic"];
 
@@ -34,6 +35,9 @@ export default function AddProductPage() {
     image: "",
     unit: "",
   });
+
+  const headerRef = useScrollReveal();
+  const formRef = useScrollReveal();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -83,34 +87,35 @@ export default function AddProductPage() {
   };
 
   const inputClass =
-    "w-full px-4 py-3 bg-white/60 backdrop-blur-sm border border-sand/60 rounded-2xl text-sm text-charcoal outline-none focus:ring-2 focus:ring-green-primary/30 focus:border-green-primary/50 transition-all duration-500 placeholder:text-charcoal-muted/60";
+    "w-full px-4 py-3 bg-bg-card border border-border rounded-2xl text-sm text-text outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all duration-300 placeholder:text-text-muted/60";
 
-  const labelClass = "block text-sm font-semibold text-charcoal mb-2";
+  const labelClass = "block text-sm font-semibold text-text mb-2";
 
   return (
-    <div className="relative min-h-screen bg-ivory overflow-hidden">
+    <div className="relative min-h-screen bg-bg overflow-hidden">
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -right-32 -top-32 h-[500px] w-[500px] rounded-full bg-green-primary/[0.04] blur-[100px] animate-pulse-glow" />
-        <div className="absolute -left-20 bottom-20 h-[400px] w-[400px] rounded-full bg-green-muted/20 blur-[80px] animate-float-slow" />
+        <div className="ambient-blob h-[500px] w-[500px] -right-32 -top-32 bg-primary" />
+        <div className="ambient-blob h-[400px] w-[400px] -left-20 bottom-20 bg-primary-light" />
       </div>
 
       <div className="relative max-w-2xl mx-auto px-4 py-12 md:py-16">
-        <div className="flex items-center gap-4 mb-10 animate-fade-in-up">
+        <div ref={headerRef} className="scroll-hidden flex items-center gap-4 mb-10">
           <Link
             href="/admin"
-            className="w-10 h-10 rounded-full bg-white/80 backdrop-blur-xl border border-sand/40 flex items-center justify-center text-charcoal hover:text-green-primary hover:border-green-primary/30 transition-all duration-500"
+            className="w-10 h-10 rounded-full bg-bg-card border border-border flex items-center justify-center text-text hover:text-primary hover:border-primary/30 transition-all duration-300"
           >
             <ArrowLeft className="w-5 h-5" />
           </Link>
           <div>
-            <p className="uppercase tracking-[0.2em] text-gold text-xs font-semibold">Products</p>
-            <h1 className="text-2xl md:text-3xl font-[family-name:var(--font-playfair)] text-charcoal">{t.admin.addNewProduct}</h1>
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-primary">Products</p>
+            <h1 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-semibold text-text">{t.admin.addNewProduct}</h1>
           </div>
         </div>
 
         <form
+          ref={formRef}
           onSubmit={handleSubmit}
-          className="bg-white/80 backdrop-blur-xl rounded-3xl border border-sand/40 shadow-xl p-8 md:p-10 space-y-6 animate-fade-in-up delay-200"
+          className="scroll-hidden bg-bg-card rounded-2xl border border-border shadow-sm p-8 md:p-10 space-y-6"
         >
           <div>
             <label className={labelClass}>{t.admin.productName} *</label>
@@ -142,7 +147,7 @@ export default function AddProductPage() {
           <div className="grid grid-cols-2 gap-5">
             <div>
               <label className={labelClass}>{t.admin.category} *</label>
-              <select name="category" value={form.category} onChange={handleChange} className={`${inputClass} bg-white`} required>
+              <select name="category" value={form.category} onChange={handleChange} className={`${inputClass} bg-bg-card`} required>
                 <option value="">{t.admin.selectCategory}</option>
                 {categoryOptions.map((c) => (
                   <option key={c} value={c}>{c}</option>
@@ -151,7 +156,7 @@ export default function AddProductPage() {
             </div>
             <div>
               <label className={labelClass}>{t.admin.subcategory}</label>
-              <select name="subcategory" value={form.subcategory} onChange={handleChange} className={`${inputClass} bg-white`} disabled={!form.category}>
+              <select name="subcategory" value={form.subcategory} onChange={handleChange} className={`${inputClass} bg-bg-card`} disabled={!form.category}>
                 <option value="">{t.admin.selectSubcategory}</option>
                 {(subcategoryMap[form.category] || []).map((s) => (
                   <option key={s} value={s}>{s}</option>
@@ -169,7 +174,7 @@ export default function AddProductPage() {
             <label className={labelClass}>{t.admin.imageUrl}</label>
             <input type="url" name="image" value={form.image} onChange={handleChange} placeholder="https://..." className={inputClass} />
             {form.image && (
-              <div className="mt-4 rounded-2xl overflow-hidden border border-sand/40">
+              <div className="mt-4 rounded-2xl overflow-hidden border border-border">
                 <img src={form.image} alt="Preview" className="w-32 h-32 object-cover" />
               </div>
             )}
@@ -178,7 +183,7 @@ export default function AddProductPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-gradient-to-r from-green-primary to-green-light text-white rounded-full py-3.5 font-semibold hover:from-green-light hover:to-green-primary shadow-lg hover:shadow-xl disabled:opacity-50 transition-all duration-500 flex items-center justify-center gap-2"
+            className="w-full bg-gradient-to-r from-primary to-primary-light text-white rounded-full py-3.5 font-semibold shadow-md hover:shadow-lg disabled:opacity-50 transition-all duration-300 active:scale-[0.98] flex items-center justify-center gap-2"
           >
             {loading ? (
               <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
