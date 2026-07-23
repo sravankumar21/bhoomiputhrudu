@@ -32,14 +32,14 @@ export default function ManageProductsPage() {
       const items = data?.data || data?.products || data;
       setProducts(Array.isArray(items) ? items : []);
     } catch {
-      toast.error(t.failedToFetch);
+      toast.error(t.admin.failedToFetch);
     } finally {
       setLoading(false);
     }
   };
 
   const deleteProduct = async (id: string) => {
-    if (!confirm(t.confirmDelete)) return;
+    if (!confirm(t.admin.confirmDelete)) return;
     setDeletingId(id);
     try {
       const res = await fetch(`/api/products/${id}`, {
@@ -48,12 +48,12 @@ export default function ManageProductsPage() {
       });
       if (res.ok) {
         setProducts((prev) => prev.filter((p) => p._id !== id));
-        toast.success(t.deleted);
+        toast.success(t.admin.deleted);
       } else {
-        toast.error(t.failedToDelete);
+        toast.error(t.admin.failedToDelete);
       }
     } catch {
-      toast.error(t.somethingWentWrong);
+      toast.error(t.admin.somethingWentWrong);
     } finally {
       setDeletingId(null);
     }
@@ -82,7 +82,7 @@ export default function ManageProductsPage() {
           </Link>
           <div>
             <p className="uppercase tracking-[0.2em] text-gold text-xs font-semibold">Products</p>
-            <h1 className="text-2xl md:text-3xl font-[family-name:var(--font-playfair)] text-charcoal">{t.manageProducts}</h1>
+            <h1 className="text-2xl md:text-3xl font-[family-name:var(--font-playfair)] text-charcoal">{t.admin.manageProducts}</h1>
           </div>
         </div>
 
@@ -94,7 +94,7 @@ export default function ManageProductsPage() {
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder={t.searchProducts}
+            placeholder={t.admin.searchProducts}
             className="flex-1 bg-transparent outline-none text-sm text-charcoal placeholder:text-charcoal-muted/60"
           />
         </div>
@@ -108,7 +108,7 @@ export default function ManageProductsPage() {
             <div className="w-20 h-20 rounded-full bg-sand/30 flex items-center justify-center mx-auto mb-6">
               <Package className="w-10 h-10 text-charcoal-muted" />
             </div>
-            <p className="text-xl font-[family-name:var(--font-playfair)] text-charcoal">{t.noProductsFound}</p>
+            <p className="text-xl font-[family-name:var(--font-playfair)] text-charcoal">{t.admin.noProductsFound}</p>
           </div>
         ) : (
           <div className="bg-white/80 backdrop-blur-xl rounded-3xl border border-sand/40 shadow-xl overflow-hidden animate-fade-in-up delay-200">
@@ -116,11 +116,11 @@ export default function ManageProductsPage() {
               <table className="w-full text-sm">
                 <thead className="bg-sand/20 text-left">
                   <tr>
-                    <th className="px-6 py-4 font-semibold text-charcoal-muted text-xs uppercase tracking-wider">{t.productName}</th>
-                    <th className="px-6 py-4 font-semibold text-charcoal-muted text-xs uppercase tracking-wider">{t.category}</th>
-                    <th className="px-6 py-4 font-semibold text-charcoal-muted text-xs uppercase tracking-wider">{t.price}</th>
-                    <th className="px-6 py-4 font-semibold text-charcoal-muted text-xs uppercase tracking-wider">{t.stock}</th>
-                    <th className="px-6 py-4 font-semibold text-charcoal-muted text-xs uppercase tracking-wider text-right">{t.actions}</th>
+                    <th className="px-6 py-4 font-semibold text-charcoal-muted text-xs uppercase tracking-wider">{t.admin.productName}</th>
+                    <th className="px-6 py-4 font-semibold text-charcoal-muted text-xs uppercase tracking-wider">{t.admin.category}</th>
+                    <th className="px-6 py-4 font-semibold text-charcoal-muted text-xs uppercase tracking-wider">{t.admin.price}</th>
+                    <th className="px-6 py-4 font-semibold text-charcoal-muted text-xs uppercase tracking-wider">{t.admin.stock}</th>
+                    <th className="px-6 py-4 font-semibold text-charcoal-muted text-xs uppercase tracking-wider text-right">{t.admin.actions}</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-sand/30">
@@ -136,9 +136,9 @@ export default function ManageProductsPage() {
                           <span className="font-medium text-charcoal">{product.name}</span>
                         </div>
                       </td>
-                      <td className="px-6 py-4 text-charcoal-muted">{product.category}</td>
-                      <td className="px-6 py-4 font-semibold text-charcoal">₹{product.price}</td>
-                      <td className="px-6 py-4 text-charcoal-muted">{product.stock ?? "—"}</td>
+                      <td className="px-6 py-4 text-charcoal-muted">{product.admin.category}</td>
+                      <td className="px-6 py-4 font-semibold text-charcoal">₹{product.admin.price}</td>
+                      <td className="px-6 py-4 text-charcoal-muted">{product.admin.stock ?? "—"}</td>
                       <td className="px-6 py-4 text-right">
                         <button
                           onClick={() => deleteProduct(product._id)}

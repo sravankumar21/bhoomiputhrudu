@@ -49,17 +49,17 @@ export default function AdminDashboard() {
   };
 
   const statCards = [
-    { label: t.totalProducts, value: stats.totalProducts, icon: Package, gradient: "from-blue-500 to-blue-600" },
-    { label: t.totalOrders, value: stats.totalOrders, icon: ShoppingCart, gradient: "from-orange-400 to-orange-500" },
-    { label: t.totalFarmers, value: stats.totalFarmers, icon: Users, gradient: "from-purple-500 to-purple-600" },
-    { label: t.totalRevenue, value: `₹${stats.totalRevenue.toLocaleString()}`, icon: DollarSign, gradient: "from-green-primary to-green-light" },
+    { label: t.admin.totalProducts, value: stats.totalProducts, icon: Package, gradient: "from-blue-500 to-blue-600" },
+    { label: t.admin.totalOrders, value: stats.totalOrders, icon: ShoppingCart, gradient: "from-orange-400 to-orange-500" },
+    { label: t.admin.totalFarmers, value: stats.totalFarmers, icon: Users, gradient: "from-purple-500 to-purple-600" },
+    { label: t.admin.totalRevenue, value: `₹${stats.totalRevenue.toLocaleString()}`, icon: DollarSign, gradient: "from-green-primary to-green-light" },
   ];
 
   const links = [
-    { href: "/admin/add-product", label: t.addProduct, icon: Plus, gradient: "from-green-primary to-green-light" },
-    { href: "/admin/manage-products", label: t.manageProducts, icon: Edit, gradient: "from-blue-500 to-blue-600" },
-    { href: "/admin/manage-orders", label: t.manageOrders, icon: ClipboardList, gradient: "from-orange-400 to-orange-500" },
-    { href: "/admin/manage-farmers", label: t.manageFarmers, icon: UserCog, gradient: "from-purple-500 to-purple-600" },
+    { href: "/admin/add-product", label: t.admin.addProduct, icon: Plus, gradient: "from-green-primary to-green-light" },
+    { href: "/admin/manage-products", label: t.admin.manageProducts, icon: Edit, gradient: "from-blue-500 to-blue-600" },
+    { href: "/admin/manage-orders", label: t.admin.manageOrders, icon: ClipboardList, gradient: "from-orange-400 to-orange-500" },
+    { href: "/admin/manage-farmers", label: t.admin.manageFarmers, icon: UserCog, gradient: "from-purple-500 to-purple-600" },
   ];
 
   return (
@@ -73,7 +73,7 @@ export default function AdminDashboard() {
         <div className="text-center mb-12 animate-fade-in-up">
           <p className="uppercase tracking-[0.2em] text-gold text-sm font-semibold mb-3">Administration</p>
           <h1 className="text-3xl md:text-4xl font-[family-name:var(--font-playfair)] text-charcoal">
-            {t.adminDashboard}
+            {t.admin.dashboard}
           </h1>
         </div>
 

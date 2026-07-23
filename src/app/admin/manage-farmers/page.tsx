@@ -32,14 +32,14 @@ export default function ManageFarmersPage() {
       const items = data?.data || data?.farmers || data;
       setFarmers(Array.isArray(items) ? items : []);
     } catch {
-      toast.error(t.failedToFetch);
+      toast.error(t.admin.failedToFetch);
     } finally {
       setLoading(false);
     }
   };
 
   const deleteFarmer = async (id: string) => {
-    if (!confirm(t.confirmDelete)) return;
+    if (!confirm(t.admin.confirmDelete)) return;
     setDeletingId(id);
     try {
       const res = await fetch(`/api/farmers/${id}`, {
@@ -48,12 +48,12 @@ export default function ManageFarmersPage() {
       });
       if (res.ok) {
         setFarmers((prev) => prev.filter((f) => f._id !== id));
-        toast.success(t.deleted);
+        toast.success(t.admin.deleted);
       } else {
-        toast.error(t.failedToDelete);
+        toast.error(t.admin.failedToDelete);
       }
     } catch {
-      toast.error(t.somethingWentWrong);
+      toast.error(t.admin.somethingWentWrong);
     } finally {
       setDeletingId(null);
     }
@@ -84,7 +84,7 @@ export default function ManageFarmersPage() {
           </Link>
           <div>
             <p className="uppercase tracking-[0.2em] text-gold text-xs font-semibold">Farmers</p>
-            <h1 className="text-2xl md:text-3xl font-[family-name:var(--font-playfair)] text-charcoal">{t.manageFarmers}</h1>
+            <h1 className="text-2xl md:text-3xl font-[family-name:var(--font-playfair)] text-charcoal">{t.admin.manageFarmers}</h1>
           </div>
         </div>
 
@@ -96,7 +96,7 @@ export default function ManageFarmersPage() {
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder={t.searchFarmers}
+            placeholder={t.admin.searchFarmers}
             className="flex-1 bg-transparent outline-none text-sm text-charcoal placeholder:text-charcoal-muted/60"
           />
         </div>
@@ -110,7 +110,7 @@ export default function ManageFarmersPage() {
             <div className="w-20 h-20 rounded-full bg-sand/30 flex items-center justify-center mx-auto mb-6">
               <Users className="w-10 h-10 text-charcoal-muted" />
             </div>
-            <p className="text-xl font-[family-name:var(--font-playfair)] text-charcoal">{t.noFarmersFound}</p>
+            <p className="text-xl font-[family-name:var(--font-playfair)] text-charcoal">{t.admin.noFarmersFound}</p>
           </div>
         ) : (
           <div className="bg-white/80 backdrop-blur-xl rounded-3xl border border-sand/40 shadow-xl overflow-hidden animate-fade-in-up delay-200">
@@ -118,11 +118,11 @@ export default function ManageFarmersPage() {
               <table className="w-full text-sm">
                 <thead className="bg-sand/20 text-left">
                   <tr>
-                    <th className="px-6 py-4 font-semibold text-charcoal-muted text-xs uppercase tracking-wider">{t.name}</th>
-                    <th className="px-6 py-4 font-semibold text-charcoal-muted text-xs uppercase tracking-wider">{t.mobileNumber}</th>
-                    <th className="px-6 py-4 font-semibold text-charcoal-muted text-xs uppercase tracking-wider">{t.email}</th>
-                    <th className="px-6 py-4 font-semibold text-charcoal-muted text-xs uppercase tracking-wider">{t.registeredOn}</th>
-                    <th className="px-6 py-4 font-semibold text-charcoal-muted text-xs uppercase tracking-wider text-right">{t.actions}</th>
+                    <th className="px-6 py-4 font-semibold text-charcoal-muted text-xs uppercase tracking-wider">{t.admin.name}</th>
+                    <th className="px-6 py-4 font-semibold text-charcoal-muted text-xs uppercase tracking-wider">{t.admin.mobileNumber}</th>
+                    <th className="px-6 py-4 font-semibold text-charcoal-muted text-xs uppercase tracking-wider">{t.admin.email}</th>
+                    <th className="px-6 py-4 font-semibold text-charcoal-muted text-xs uppercase tracking-wider">{t.admin.registeredOn}</th>
+                    <th className="px-6 py-4 font-semibold text-charcoal-muted text-xs uppercase tracking-wider text-right">{t.admin.actions}</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-sand/30">

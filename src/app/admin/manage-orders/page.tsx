@@ -32,7 +32,7 @@ export default function ManageOrdersPage() {
       const items = data?.data || data?.orders || data;
       setOrders(Array.isArray(items) ? items : []);
     } catch {
-      toast.error(t.failedToFetch);
+      toast.error(t.admin.failedToFetch);
     } finally {
       setLoading(false);
     }
@@ -48,12 +48,12 @@ export default function ManageOrdersPage() {
       });
       if (res.ok) {
         setOrders((prev) => prev.map((o) => (o._id === orderId ? { ...o, status } : o)));
-        toast.success(t.statusUpdated);
+        toast.success(t.admin.statusUpdated);
       } else {
-        toast.error(t.failedToUpdate);
+        toast.error(t.admin.failedToUpdate);
       }
     } catch {
-      toast.error(t.somethingWentWrong);
+      toast.error(t.admin.somethingWentWrong);
     } finally {
       setUpdatingId(null);
     }
@@ -91,7 +91,7 @@ export default function ManageOrdersPage() {
           </Link>
           <div>
             <p className="uppercase tracking-[0.2em] text-gold text-xs font-semibold">Orders</p>
-            <h1 className="text-2xl md:text-3xl font-[family-name:var(--font-playfair)] text-charcoal">{t.manageOrders}</h1>
+            <h1 className="text-2xl md:text-3xl font-[family-name:var(--font-playfair)] text-charcoal">{t.admin.manageOrders}</h1>
           </div>
         </div>
 
@@ -103,7 +103,7 @@ export default function ManageOrdersPage() {
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder={t.searchOrders}
+            placeholder={t.admin.searchOrders}
             className="flex-1 bg-transparent outline-none text-sm text-charcoal placeholder:text-charcoal-muted/60"
           />
         </div>
@@ -117,7 +117,7 @@ export default function ManageOrdersPage() {
             <div className="w-20 h-20 rounded-full bg-sand/30 flex items-center justify-center mx-auto mb-6">
               <Package className="w-10 h-10 text-charcoal-muted" />
             </div>
-            <p className="text-xl font-[family-name:var(--font-playfair)] text-charcoal">{t.noOrdersFound}</p>
+            <p className="text-xl font-[family-name:var(--font-playfair)] text-charcoal">{t.admin.noOrdersFound}</p>
           </div>
         ) : (
           <div className="bg-white/80 backdrop-blur-xl rounded-3xl border border-sand/40 shadow-xl overflow-hidden animate-fade-in-up delay-200">
@@ -125,12 +125,12 @@ export default function ManageOrdersPage() {
               <table className="w-full text-sm">
                 <thead className="bg-sand/20 text-left">
                   <tr>
-                    <th className="px-6 py-4 font-semibold text-charcoal-muted text-xs uppercase tracking-wider">{t.orderId}</th>
-                    <th className="px-6 py-4 font-semibold text-charcoal-muted text-xs uppercase tracking-wider">{t.items}</th>
-                    <th className="px-6 py-4 font-semibold text-charcoal-muted text-xs uppercase tracking-wider">{t.total}</th>
-                    <th className="px-6 py-4 font-semibold text-charcoal-muted text-xs uppercase tracking-wider">{t.paymentMethod}</th>
-                    <th className="px-6 py-4 font-semibold text-charcoal-muted text-xs uppercase tracking-wider">{t.status}</th>
-                    <th className="px-6 py-4 font-semibold text-charcoal-muted text-xs uppercase tracking-wider text-right">{t.actions}</th>
+                    <th className="px-6 py-4 font-semibold text-charcoal-muted text-xs uppercase tracking-wider">{t.admin.orderId}</th>
+                    <th className="px-6 py-4 font-semibold text-charcoal-muted text-xs uppercase tracking-wider">{t.admin.items}</th>
+                    <th className="px-6 py-4 font-semibold text-charcoal-muted text-xs uppercase tracking-wider">{t.admin.total}</th>
+                    <th className="px-6 py-4 font-semibold text-charcoal-muted text-xs uppercase tracking-wider">{t.admin.paymentMethod}</th>
+                    <th className="px-6 py-4 font-semibold text-charcoal-muted text-xs uppercase tracking-wider">{t.admin.status}</th>
+                    <th className="px-6 py-4 font-semibold text-charcoal-muted text-xs uppercase tracking-wider text-right">{t.admin.actions}</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-sand/30">
